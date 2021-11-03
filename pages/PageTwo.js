@@ -1,11 +1,26 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { TouchableOpacity, Text } from 'react-native'
+import { Header } from 'react-native-elements'
 
-const PageTwo = () => {
+
+const PageTwo = ({ navigation }) => {
+    const BackBtn = ({ stm }) => {
+        return (
+            <TouchableOpacity onPress={stm}>
+                <Text >Back</Text>
+            </TouchableOpacity>
+        );
+    }
+
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Page Two</Text>
-        </View>
+        <>
+            <Header
+                leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
+                centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                // rightComponent={{ icon: 'home', color: '#fff' }}
+                rightComponent={<BackBtn stm={() => navigation.navigate('Page One')} />}
+            />
+        </>
     )
 }
 

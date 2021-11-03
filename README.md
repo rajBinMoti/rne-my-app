@@ -18,6 +18,8 @@
 
 `npm install @react-navigation/native-stack`
 
+---
+
 ### Package.json Before
 
 ```JSON
@@ -35,19 +37,22 @@
 
 ```JSON
   "dependencies": {
-    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native": "^6.0.6",           // 1
+    "@react-navigation/native-stack": "^6.2.5",     // 2
     "expo": "~43.0.0",
     "expo-status-bar": "~1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
-    "react-native-elements": "^3.4.2",          // 1
-    "react-native-safe-area-context": "3.3.2",  // 2
-    "react-native-vector-icons": "^9.0.0",      // 3
-    "react-native-web": "0.17.1",               // 4
-    "react-native-screens": "~3.8.0"            // 5
+    "react-native-elements": "^3.4.2",              // 3
+    "react-native-safe-area-context": "3.3.2",      // 4
+    "react-native-screens": "~3.8.0",               // 5
+    "react-native-vector-icons": "^9.0.0",          // 6
+    "react-native-web": "0.17.1"
   },
 ```
+
+---
 
 ## **expo install [package-name]**
 
@@ -173,3 +178,27 @@ export default function App() {
   );
 }
 ```
+
+---
+
+## **Options - MainComponents.js**
+
+```JavaScript
+const MainComponent = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Page One'
+                    component={PageOne}
+                    options={{ title: 'Home Page' }} />
+                <Stack.Screen
+                    name='Page Two'
+                    component={PageTwo}
+                    options={{ headerShown: false }} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+```
+## **Moving Between Screens**

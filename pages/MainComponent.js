@@ -11,8 +11,14 @@ const MainComponent = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name='Page One' component={PageOne} />
-                <Stack.Screen name='Page Two' component={PageTwo} />
+                <Stack.Screen
+                    name='Page One'
+                    component={PageOne}
+                    options={{ title: 'Home Page' }} />
+                <Stack.Screen
+                    name='Page Two'
+                    component={PageTwo}
+                    options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
