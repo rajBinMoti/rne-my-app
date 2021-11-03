@@ -1,13 +1,18 @@
 import React from 'react'
-import { TouchableOpacity, Text } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { Header } from 'react-native-elements'
+import { Icon } from 'react-native-elements'
 
 
 const PageTwo = ({ navigation }) => {
     const BackBtn = ({ stm }) => {
         return (
             <TouchableOpacity onPress={stm}>
-                <Text >Back</Text>
+                <Icon
+                    name='sc-telegram'
+                    type='evilicon'
+                    color='#fff'
+                />
             </TouchableOpacity>
         );
     }

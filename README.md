@@ -201,4 +201,108 @@ const MainComponent = () => {
     )
 }
 ```
+
 ## **Moving Between Screens**
+
+### **Update PageOne.js**
+
+```JavaScript
+import React from 'react'
+import { View, Text } from 'react-native'
+
+import { Button } from 'react-native-elements';
+
+const PageOne = ({ navigation }) => {
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>Page One</Text>
+            <Button
+                title="Page Two"
+                onPress={() => navigation.navigate('Page Two')}
+                icon={{
+                    name: "chevron-forward-outline",
+                    type: 'ionicon',
+                    size: 15,
+                    color: "white"
+                }}
+
+            />
+        </View>
+    )
+}
+
+export default PageOne
+
+```
+
+### **Update PageTwo.js**
+
+```JavaScript
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
+import { Header } from 'react-native-elements'
+import { Icon } from 'react-native-elements'
+
+
+const PageTwo = ({ navigation }) => {
+    const BackBtn = ({ stm }) => {
+        return (
+            <TouchableOpacity onPress={stm}>
+                <Icon
+                    name='sc-telegram'
+                    type='evilicon'
+                    color='#fff'
+                />
+            </TouchableOpacity>
+        );
+    }
+
+    return (
+        <>
+            <Header
+                leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
+                centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+                // rightComponent={{ icon: 'home', color: '#fff' }}
+                rightComponent={<BackBtn stm={() => navigation.navigate('Page One')} />}
+            />
+        </>
+    )
+}
+
+export default PageTwo
+
+
+```
+
+### **Update MainComponents.js**
+
+```JavaScript
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import PageOne from './PageOne';
+import PageTwo from './PageTwo';
+
+
+const Stack = createNativeStackNavigator();
+
+const MainComponent = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Page One'
+                    component={PageOne}
+                    options={{ title: 'Home Page' }} />
+                <Stack.Screen
+                    name='Page Two'
+                    component={PageTwo}
+                    options={{ headerShown: false }} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}
+
+export default MainComponent
+
+```
