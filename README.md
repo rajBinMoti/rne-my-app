@@ -306,3 +306,6 @@ const MainComponent = () => {
 export default MainComponent
 
 ```
+## **Snapshot**
+![Page1](assets/mkdn/3.png)
+![Page1](assets/mkdn/4.png)
